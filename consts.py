@@ -1,1 +1,1 @@
-    
+NUM_OF_FRID = 5
