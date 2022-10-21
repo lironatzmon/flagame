@@ -12,7 +12,7 @@ state = {
     "player_place": (0, 0),
     # "flag place": do we need? its consts anyway
     "mine_places": None,
-    #"grass_places": Screen.put_grass_in_field(),
+    "grass_places": consts.GRASS_IMAGE,
     "enter_key": True,
     "right_button": True,
     "left_button": True,
@@ -24,20 +24,20 @@ state = {
 def main():
     pygame.init()
     Screen.create()
-    #Screen.put_grass_in_field()
-
-    while state["is_window_open"]:
-        handle_user_events()
-        # last row in the while#
+    if state["is_window_open"]:
         Screen.draw_game(state)
+    # while state["is_window_open"]:
+    #     #handle_user_events()
+    #     # last row in the while#
+    #     Screen.draw_game(state)
 
 
-def handle_user_events():
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            state["is_window_open"] = False
-        elif state["state"] != consts.RUNNING_STATE:
-            continue
+# def handle_user_events():
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             state["is_window_open"] = False
+#         elif state["state"] != consts.RUNNING_STATE:
+#             continue
 
 
 
