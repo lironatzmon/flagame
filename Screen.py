@@ -20,26 +20,15 @@ def create():
 
 def draw_game(state):
     screen.fill(consts.BACKGROUND_COLOR)
+    put_grass_in_field(state["grass_places"])
     pygame.display.flip()
-    #put_grass_in_field()
 
 
-# def create_grass():
-#     grass = pygame.image.load("grass.png")
-#     grass_size = pygame.transform.scale(grass, (
-#         consts.GRASS_WIDTH, consts.GRASS_HEIGHT))
-# grass_box = pygame.Surface(
-#     (consts.GRASS_WIDTH, consts.GRASS_HEIGHT * 2), )
-# grass_box.fill(consts.BACKGROUND_COLOR)
-# grass_box.blit(grass_size, (0, 0))
-# return grass_box
-
-
-def put_grass_in_field():
+def put_grass_in_field(grass_img):
     for i in range(20):
         row_random = random.randint(0, consts.WINDOW_WIDTH)
         col_random = random.randint(0, consts.WINDOW_HEIGHT)
-        grass = pygame.image.load("grass.png")
+        grass = pygame.image.load(grass_img)
         grass_size = pygame.transform.scale(grass, (
             consts.GRASS_WIDTH, consts.GRASS_HEIGHT))
         screen.blit(grass_size, (row_random, col_random))
