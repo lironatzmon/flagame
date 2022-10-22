@@ -13,11 +13,10 @@ state = {
     # "flag place": do we need? its consts anyway
     "mine_places": None,
     "grass_places": consts.GRASS_IMAGE,
-    "enter_key": True,
-    "right_button": True,
-    "left_button": True,
-    "up_button": True,
-    "down_button": True,
+    # when you press an arrow in the key_board up\down\right\left\enter it will change
+    "key_input": None,
+    "is_touch_flag": True,
+    "is_touch_mine": True
 }
 
 
@@ -26,11 +25,10 @@ def main():
     Screen.create()
     if state["is_window_open"]:
         Screen.draw_game(state)
-    # while state["is_window_open"]:
-    #     #handle_user_events()
-    #     # last row in the while#
-    #     Screen.draw_game(state)
-
+        while state["is_window_open"]:
+            handle_user_events()
+        # last row in the while#
+        # Screen.draw_game(state)
 
 
 def handle_user_events():
