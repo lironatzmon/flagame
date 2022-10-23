@@ -1,5 +1,7 @@
 import pygame
 
+import Screen
+
 SQUARE_GRID_ROWS = 25
 SQUARE_GRID_COLS = 50
 LENGTH = 20
@@ -15,6 +17,7 @@ MINE_WIDTH = 60
 FLAG_HEIGHT = 60
 FLAG_WIDTH = 80
 BACKGROUND_COLOR = (74, 125, 60)
+GRASS_PLACES = Screen.draw_grass()
 
 RUNNING_STATE = 1
 LOSE_STATE = 2
@@ -25,5 +28,5 @@ GRASS_IMAGE = "grass.png"
 FLAG_IMAGE = "flag.png"
 MINE_IMAGE = "mine.png"
 WHITE = (200, 200, 200)
-SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+
 
