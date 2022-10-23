@@ -27,17 +27,21 @@ def draw_game(state):
     pygame.display.flip()
 
 
-def put_grass_in_field(grass_img):
+def draw_grass(cord_x, cord_y):
+    grass = pygame.image.load(consts.GRASS_IMAGE)
+    grass_size = pygame.transform.scale(grass, (
+        consts.GRASS_WIDTH, consts.GRASS_HEIGHT))
+    screen.blit(grass_size, (cord_x, cord_y))
+    pygame.display.update()
+
+
+def put_grass_in_field():
     for i in range(20):
         row_random = random.randint(0, consts.SQUARE_GRID_ROWS - 3)
         col_random = random.randint(0, consts.SQUARE_GRID_COLS - 3)
         cord_y = int(row_random * 20)
         cord_x = int(col_random * 20)
-        grass = pygame.image.load(grass_img)
-        grass_size = pygame.transform.scale(grass, (
-            consts.GRASS_WIDTH, consts.GRASS_HEIGHT))
-        screen.blit(grass_size, (cord_x, cord_y))
-        pygame.display.update()
+        draw_grass(cord_x, cord_y)
 
 
 def draw_grid():
