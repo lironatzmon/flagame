@@ -53,7 +53,7 @@ def draw_mine():
 
 
 def draw_flag():
-    flag = pygame.image.load(consts.FLAG_IMAGE_IMAGE)
+    flag = pygame.image.load(consts.FLAG_IMAGE)
     flag_size = pygame.transform.scale(flag, (
         consts.FLAG_WIDTH, consts.FLAG_HEIGHT))
     return flag, flag_size
