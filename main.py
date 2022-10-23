@@ -14,6 +14,7 @@ state = {
     "flag_place_x": consts.WINDOW_WIDTH - consts.FLAG_WIDTH,
     "flag_place_y": consts.WINDOW_HEIGHT - consts.FLAG_HEIGHT,
     "mine_places": consts.MINE_IMAGE,
+    "grass_places": Screen.put_grass_in_field(),
     "key_input": False,
     "enter_key": False,
     "is_touch_flag": True,
