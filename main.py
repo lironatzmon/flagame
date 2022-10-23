@@ -11,7 +11,7 @@ state = {
     # player place is changing during the game but this is his first place
     "player_place": (0, 0),
     # "flag place": do we need? its consts anyway
-    "mine_places": None,
+    "mine_places": consts.MINE_IMAGE,
     "grass_places": consts.GRASS_IMAGE,
     # when you press an arrow in the key_board up\down\right\left\enter it will change
     "key_input": None,
