@@ -1,4 +1,3 @@
-import pygame
 import Screen
 
 SQUARE_GRID_ROWS = 25
@@ -16,7 +15,7 @@ MINE_WIDTH = 60
 FLAG_HEIGHT = 60
 FLAG_WIDTH = 80
 BACKGROUND_COLOR = (74, 125, 60)
-GRASS_PLACES = Screen.draw_grass()
+
 
 RUNNING_STATE = 1
 LOSE_STATE = 2
