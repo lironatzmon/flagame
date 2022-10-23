@@ -9,12 +9,13 @@ state = {
     "is_window_open": True,
     "state": consts.RUNNING_STATE,
     # player place is changing during the game but this is his first place
-    "player_place": (0, 0),
-    # "flag place": do we need? its consts anyway
+    "player_place_x": 0,
+    "player_place_y": 0,
+    "flag_place_x": consts.WINDOW_WIDTH - consts.FLAG_WIDTH,
+    "flag_place_y": consts.WINDOW_HEIGHT - consts.FLAG_HEIGHT,
     "mine_places": consts.MINE_IMAGE,
     "grass_places": consts.GRASS_IMAGE,
-    # when you press an arrow in the key_board up\down\right\left\enter it will change
-    "key_input": None,
+    "key_input": False,
     "is_touch_flag": True,
     "is_touch_mine": True
 }
@@ -23,12 +24,19 @@ state = {
 def main():
     pygame.init()
     Screen.create()
-    if state["is_window_open"]:
-        Screen.draw_game(state)
-        while state["is_window_open"]:
-            handle_user_events()
-        # last row in the while#
+
+    # if state["is_window_open"]:
         # Screen.draw_game(state)
+    while state["is_window_open"]:
+
+        handle_user_events()
+
+        if state["key_input"]:
+
+            state["player_place_x"], state["player_place_y"] = move(state["player_place_x"], state["player_place_y"])
+        # last row in the while #
+        Screen.draw_game(state)
+
 
 
 def handle_user_events():
@@ -37,6 +45,23 @@ def handle_user_events():
             state["is_window_open"] = False
         elif state["state"] != consts.RUNNING_STATE:
             continue
+        elif event.type == pygame.KEYDOWN:
+            state["key_input"] = True
+
+
+def move(cord_x, cord_y):
+    key_input = pygame.key.get_pressed()
+    state["key_input"] = True
+    step = 20
+    if key_input[pygame.K_LEFT]:
+        cord_x -= step
+    if key_input[pygame.K_RIGHT]:
+        cord_x += step
+    if key_input[pygame.K_UP]:
+        cord_y -= step
+    if key_input[pygame.K_DOWN]:
+        cord_y += step
+    return cord_x, cord_y
 
 
 if __name__ == '__main__':
