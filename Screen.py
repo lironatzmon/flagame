@@ -1,5 +1,4 @@
 import consts
-import MineField
 import pygame
 import random
 
@@ -53,3 +52,8 @@ def draw_mine():
     return mine, mine_size
 
 
+def draw_flag():
+    flag = pygame.image.load(consts.FLAG_IMAGE_IMAGE)
+    flag_size = pygame.transform.scale(flag, (
+        consts.FLAG_WIDTH, consts.FLAG_HEIGHT))
+    return flag, flag_size
