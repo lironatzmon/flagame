@@ -44,12 +44,13 @@ def put_grass_in_field():
     cord_x = int(col_random * 20)
     return cord_x, cord_y
 
+
 def draw_grid():
     block_size = 20
     for x in range(0, consts.WINDOW_WIDTH, block_size):
         for y in range(0, consts.WINDOW_HEIGHT, block_size):
             rect = pygame.Rect(x, y, block_size, block_size)
-            pygame.draw.rect(consts.SCREEN, consts.WHITE, rect, 1)
+            pygame.draw.rect(screen, consts.WHITE, rect, 1)
 
 
 def draw_mine():
