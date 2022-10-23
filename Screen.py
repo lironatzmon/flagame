@@ -27,8 +27,8 @@ def draw_game(state):
 
 def put_grass_in_field(grass_img):
     for i in range(20):
-        row_random = random.randint(0, consts.SQUARE_GRID_ROWS-3)
-        col_random = random.randint(0, consts.SQUARE_GRID_COLS-3)
+        row_random = random.randint(0, consts.SQUARE_GRID_ROWS - 3)
+        col_random = random.randint(0, consts.SQUARE_GRID_COLS - 3)
         cord_y = int(row_random * 20)
         cord_x = int(col_random * 20)
         grass = pygame.image.load(grass_img)
@@ -38,5 +38,18 @@ def put_grass_in_field(grass_img):
         pygame.display.update()
 
 
+def draw_grid():
+    block_size = 20
+    for x in range(0, consts.WINDOW_WIDTH, block_size):
+        for y in range(0, consts.WINDOW_HEIGHT, block_size):
+            rect = pygame.Rect(x, y, block_size, block_size)
+            pygame.draw.rect(consts.SCREEN, consts.WHITE, rect, 1)
+
+
+def draw_mine():
+    mine = pygame.image.load(consts.MINE_IMAGE)
+    mine_size = pygame.transform.scale(mine, (
+        consts.MINE_WIDTH, consts.MINE_HEIGHT))
+    return mine, mine_size
 
 
