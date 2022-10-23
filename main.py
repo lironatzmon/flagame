@@ -15,6 +15,7 @@ state = {
     "flag_place_y": consts.WINDOW_HEIGHT - consts.FLAG_HEIGHT,
     "mine_places": consts.MINE_IMAGE,
     "key_input": False,
+    "enter_key": False,
     "is_touch_flag": True,
     "is_touch_mine": True
 }
@@ -33,6 +34,12 @@ def main():
         if state["key_input"]:
 
             state["player_place_x"], state["player_place_y"] = move(state["player_place_x"], state["player_place_y"])
+
+        if state["enter_key"]:
+            Screen.draw_grid()
+
+
+
         # last row in the while
         Screen.draw_game(state)
 
@@ -45,6 +52,9 @@ def handle_user_events():
             continue
         elif event.type == pygame.KEYDOWN:
             state["key_input"] = True
+        key_input = pygame.key.get_pressed()
+        if key_input[pygame.K_KP_ENTER]:
+            state["enter_key"] = True
 
 
 def move(cord_x, cord_y):
@@ -61,9 +71,10 @@ def move(cord_x, cord_y):
         cord_y += step
     return cord_x, cord_y
 
-# def press_enter_key_board():
+# def press_enter_in_key_board():
 #     key_input = pygame.key.get_pressed()
 #     if key_input[pygame.K_KP_ENTER]:
+
 
 
 if __name__ == '__main__':
