@@ -1,3 +1,4 @@
+import Soldier
 import consts
 import pygame
 import random
@@ -21,6 +22,8 @@ def draw_game(state):
     screen.fill(consts.BACKGROUND_COLOR)
     pygame.display.set_caption("The Flag")
     put_grass_in_field(state["grass_places"])
+    Soldier.create_soldier(state["player_place_x"], state["player_place_y"])
+    draw_flag(state["flag_place_x"], state["flag_place_y"])
     pygame.display.flip()
 
 
@@ -52,8 +55,9 @@ def draw_mine():
     return mine, mine_size
 
 
-def draw_flag():
+def draw_flag(left_corner_x, left_corner_y):
     flag = pygame.image.load(consts.FLAG_IMAGE)
     flag_size = pygame.transform.scale(flag, (
         consts.FLAG_WIDTH, consts.FLAG_HEIGHT))
-    return flag, flag_size
+    screen.blit(flag_size, (left_corner_x, left_corner_y))
+    pygame.display.update()
