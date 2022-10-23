@@ -1,5 +1,4 @@
 import pygame
-
 import Screen
 
 SQUARE_GRID_ROWS = 25
