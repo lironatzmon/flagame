@@ -21,28 +21,33 @@ def create():
 def draw_game(state):
     screen.fill(consts.BACKGROUND_COLOR)
     pygame.display.set_caption("The Flag")
-    consts.GRASS_PLACES
+    draw_grass(state["grass_places"])
     Soldier.create_soldier(state["player_place_x"], state["player_place_y"])
     draw_flag(state["flag_place_x"], state["flag_place_y"])
     pygame.display.flip()
 
 
-def draw_grass():
+def draw_grass(cord_list):
     grass = pygame.image.load(consts.GRASS_IMAGE)
     grass_size = pygame.transform.scale(grass, (
         consts.GRASS_WIDTH, consts.GRASS_HEIGHT))
-    for i in range(20):
-        cord_x, cord_y = put_grass_in_field()
+    for cord in cord_list:
+        cord_x = cord[0]
+        cord_y = cord[1]
         screen.blit(grass_size, (cord_x, cord_y))
     pygame.display.update()
 
 
 def put_grass_in_field():
-    row_random = random.randint(0, consts.SQUARE_GRID_ROWS - 3)
-    col_random = random.randint(0, consts.SQUARE_GRID_COLS - 3)
-    cord_y = int(row_random * 20)
-    cord_x = int(col_random * 20)
-    return cord_x, cord_y
+    cord_list = []
+    for i in range(20):
+        row_random = random.randint(0, consts.SQUARE_GRID_ROWS - 3)
+        col_random = random.randint(0, consts.SQUARE_GRID_COLS - 3)
+        cord_y = int(row_random * 20)
+        cord_x = int(col_random * 20)
+        cords = [cord_x, cord_y]
+        cord_list.append(cords)
+    return cord_list
 
 
 def draw_grid():
