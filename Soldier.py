@@ -3,8 +3,6 @@ import Screen
 import consts
 
 
-# or left_corner_y > 460 or left_corner_x< 40 or left_corner_x> 960:
-
 def create_soldier(left_corner_x, left_corner_y):
     soldier = pygame.image.load(consts.SOLDIER_IMAGE)
     soldier_size = pygame.transform.scale(soldier, (
