@@ -2,6 +2,7 @@ import pygame
 import consts
 import random
 import Screen
+import Soldier
 
 mine_flag_grid = []
 
@@ -39,3 +40,15 @@ def put_mine_in_field():
         Screen.screen.blit(mine_size, (cord_x, cord_y))
         pygame.display.update()
 
+
+def check_touch_mine(list_index_sol_legs):
+    for part in list_index_sol_legs:
+        if mine_flag_grid[part[0]][part[1]]["content"] == "M":
+            return True
+
+
+def check_touch_flag(list_index_sol_legs):
+    for row in range(23, 25):
+        for col in range(46, 50):
+            if list_index_sol_legs[1] == [row, col]:
+                return True
