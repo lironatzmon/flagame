@@ -1,3 +1,5 @@
+import pygame
+
 SQUARE_GRID_ROWS = 25
 SQUARE_GRID_COLS = 50
 LENGTH = 20
@@ -21,4 +23,6 @@ WIN_STATE = 3
 GRASS_IMAGE = "grass.png"
 FLAG_IMAGE = "flag.png"
 MINE_IMAGE = "mine.png"
+WHITE = (200, 200, 200)
+SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
