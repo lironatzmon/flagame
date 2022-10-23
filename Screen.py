@@ -21,7 +21,7 @@ def create():
 def draw_game(state):
     screen.fill(consts.BACKGROUND_COLOR)
     pygame.display.set_caption("The Flag")
-    put_grass_in_field(state["grass_places"])
+    put_grass_in_field()
     Soldier.create_soldier(state["player_place_x"], state["player_place_y"])
     draw_flag(state["flag_place_x"], state["flag_place_y"])
     pygame.display.flip()
