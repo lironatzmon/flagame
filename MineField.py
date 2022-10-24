@@ -12,17 +12,18 @@ def create_main_matrix():
     for i in range(consts.SQUARE_GRID_ROWS):
         row = []
         for j in range(consts.SQUARE_GRID_COLS):
-            row.append({"content": "E", "left_cord_x": j * consts.LENGTH, "left_cord_y": i * consts.LENGTH})
+            row.append("E")
         mine_flag_grid.append(row)
+        return mine_flag_grid
 
 
 def put_flag_places():
     for row in range(21, 24):
         for col in range(46, 50):
-            mine_flag_grid[row][col]["content"] = "F"
-            flag, flag_size = Screen.draw_flag()
-            Screen.screen.blit(flag_size, (row * consts.LENGTH, col * consts.LENGTH))
-            pygame.display.update()
+            mine_flag_grid[row][col] = "F"
+            # flag, flag_size = Screen.draw_flag()
+            # Screen.screen.blit(flag_size, (row * consts.LENGTH, col * consts.LENGTH))
+            # pygame.display.update()
 
 
 def put_mine_in_field():
@@ -32,9 +33,9 @@ def put_mine_in_field():
         col_random = random.randint(0, consts.SQUARE_GRID_COLS - 3)
         cord_y = int(row_random * 20)
         cord_x = int(col_random * 20)
-        if mine_flag_grid[row_random][col_random]["content"] == "E":
-            if mine_flag_grid[row_random][col_random]["content"] != "M":
-                mine_flag_grid[row_random][col_random]["content"] = "M"
+        if mine_flag_grid[row_random][col_random] == "E":
+            if mine_flag_grid[row_random][col_random] != "M":
+                mine_flag_grid[row_random][col_random] = "M"
                 num_mines += 1
         # mine, mine_size = Screen.draw_mine()
         # Screen.screen.blit(mine_size, (cord_x, cord_y))
@@ -43,7 +44,7 @@ def put_mine_in_field():
 
 def check_touch_mine(list_index_sol_legs):
     for part in list_index_sol_legs:
-        if mine_flag_grid[part[0]][part[1]]["content"] == "M":
+        if mine_flag_grid[part[0]][part[1]] == "M":
             return True
 
 
@@ -54,11 +55,9 @@ def check_touch_mine(list_index_sol_legs):
 #                 return True
 
 def check_touch_flag(list_index_sol_body):
-    if mine_flag_grid[list_index_sol_body[0][0]][list_index_sol_body[0][1]] == "F" or \
-         mine_flag_grid[list_index_sol_body[1][0]][list_index_sol_body[1][1]] == "F" or \
-            mine_flag_grid[list_index_sol_body[2][0]][list_index_sol_body[2][1]] == "F" or \
-            mine_flag_grid[list_index_sol_body[3][0]][list_index_sol_body[3][1]] == "F":
-        return True
-
-
-
+    if len(mine_flag_grid) > 0:
+        if mine_flag_grid[list_index_sol_body[0][0]][list_index_sol_body[0][1]] == "F" or \
+                mine_flag_grid[list_index_sol_body[1][0]][list_index_sol_body[1][1]] == "F" or \
+                mine_flag_grid[list_index_sol_body[2][0]][list_index_sol_body[2][1]] == "F" or \
+                mine_flag_grid[list_index_sol_body[3][0]][list_index_sol_body[3][1]] == "F":
+            return True
