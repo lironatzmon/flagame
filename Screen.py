@@ -1,3 +1,5 @@
+import time
+
 import MineField
 import Soldier
 import consts
@@ -77,7 +79,7 @@ def create_mine_screen(mines_list, left_corner_x, left_corner_y):
         consts.SOLDIER_WIDTH, consts.SOLDIER_HEIGHT))
     screen.blit(night_soldier_size, (left_corner_x, left_corner_y))
     pygame.display.flip()
-
+    time.sleep(1)
 
 def draw_mine(cord_x, cord_y):
     mine = pygame.image.load(consts.MINE_IMAGE)
