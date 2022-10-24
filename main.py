@@ -28,7 +28,7 @@ def main():
     pygame.init()
     Screen.create()
     Screen.draw_game(state)
-
+    print(MineField.put_mine_in_field())
     while state["is_window_open"]:
 
         handle_user_events()
@@ -38,7 +38,7 @@ def main():
             state["player_place_x"], state["player_place_y"] = press_check(state["player_place_x"],
                                                                            state["player_place_y"])
             Screen.draw_game(state)
-    
+
 
 def handle_user_events():
     for event in pygame.event.get():
@@ -82,3 +82,6 @@ if __name__ == '__main__':
 # if MineField.check_touch_flag(list_index_sol_body):
 #     state["state"] = consts.WIN_STATE
 #     win_message()
+
+if __name__ == '__main__':
+    main()
