@@ -13,8 +13,9 @@ state = {
     "main_matrix": MineField.create_main_matrix(),
     "flag_place_x": consts.WINDOW_WIDTH - consts.FLAG_WIDTH,
     "flag_place_y": consts.WINDOW_HEIGHT - consts.FLAG_HEIGHT,
-    "mine_places": consts.MINE_IMAGE,
+    "mine_img": consts.MINE_IMAGE,
     "grass_places": Screen.put_grass_in_field(),
+    "mine_places": MineField.put_mine_in_field(),
     "key_input": False,
 
 }
