@@ -1,3 +1,4 @@
+import MineField
 import Soldier
 import consts
 import pygame
@@ -57,37 +58,32 @@ def put_grass_in_field():
 #             rect = pygame.Rect(x, y, block_size, block_size)
 #             pygame.draw.rect(screen, consts.WHITE, rect, 1)
 
-def create_mine_screen():
-    grid = []
-    for row in range(consts.SQUARE_GRID_ROWS):
-        grid.append([])
-        for col in range(consts.SQUARE_GRID_COLS):
-            grid[row].append(0)
+def create_mine_screen(mines_list, left_corner_x, left_corner_y):
     pygame.init()
     window_size = [consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT]
     scr = pygame.display.set_mode(window_size)
-    pygame.display.set_caption("Grid")
+    pygame.display.set_caption("Mines Locations")
     scr.fill(consts.BLACK_SCREEN)
-    for row in range(consts.SQUARE_GRID_ROWS):
-        for col in range(consts.SQUARE_GRID_COLS):
-            color = consts.GREEN_GRID
-            pygame.draw.rect(scr,
-                                 color,
-                                 [(consts.MARGIN + consts.WINDOW_WIDTH) * col + consts.MARGIN,
-                                  (consts.MARGIN + consts.WINDOW_HEIGHT) * row + consts.MARGIN,
-                                  consts.WINDOW_WIDTH,
-                                  consts.WINDOW_HEIGHT])
+    for x in range(0, consts.WINDOW_WIDTH, consts.LENGTH):
+        for y in range(0, consts.WINDOW_HEIGHT, consts.LENGTH):
+            rect = pygame.Rect(x, y, consts.LENGTH, consts.LENGTH)
+            pygame.draw.rect(scr, consts.GREEN_GRID, rect, 1)
+    for mine in mines_list:
+        cord_x = mine[0] * consts.LENGTH
+        cord_y = mine[1] * consts.LENGTH
+        draw_mine(cord_x, cord_y)
+    night_soldier = pygame.image.load(consts.MINE_SCREEN_SOLDIER)
+    night_soldier_size = pygame.transform.scale(night_soldier, (
+        consts.SOLDIER_WIDTH, consts.SOLDIER_HEIGHT))
+    screen.blit(night_soldier_size, (left_corner_x, left_corner_y))
     pygame.display.flip()
 
 
-def draw_mine(mine_field_field):
+def draw_mine(cord_x, cord_y):
     mine = pygame.image.load(consts.MINE_IMAGE)
     mine_size = pygame.transform.scale(mine, (
         consts.MINE_WIDTH, consts.MINE_HEIGHT))
-    for row in range(consts.SQUARE_GRID_ROWS):
-        for col in range(consts.SQUARE_GRID_COLS):
-            if mine_field_field[row][col]["content"] == "F":
-                screen.blit(mine_size, (row, col))
+    screen.blit(mine_size, (cord_x, cord_y))
     pygame.display.update()
 
 
