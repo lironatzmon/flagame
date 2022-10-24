@@ -31,15 +31,13 @@ def put_flag_places():
 
 def put_mine_in_field():
     list_places_mines = []
-    num_mines = 0
-    while num_mines < 20:
+    for i in range(20):
         row_random = random.randint(0, consts.SQUARE_GRID_ROWS - 3)
         col_random = random.randint(0, consts.SQUARE_GRID_COLS - 3)
-        if mine_flag_grid[row_random][col_random] == "E":
-            if mine_flag_grid[row_random][col_random] != "M":
-                mine_flag_grid[row_random][col_random] = "M"
-                list_places_mines.append([row_random, col_random])
-                num_mines += 1
+        cord_y = int(row_random * 20)
+        cord_x = int(col_random * 20)
+        cords = [cord_x, cord_y]
+        list_places_mines.append(cords)
     return list_places_mines
 
 
