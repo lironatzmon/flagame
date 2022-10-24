@@ -1,6 +1,4 @@
 import time
-
-import MineField
 import Soldier
 import consts
 import pygame
@@ -32,7 +30,7 @@ def draw_game(state):
         draw_lose_message()
     elif state["state"] == consts.WIN_STATE:
         draw_win_message()
-        pygame.display.flip()
+    pygame.display.flip()
 
 
 def draw_grass(cord_list):
@@ -57,13 +55,6 @@ def put_grass_in_field():
         cord_list.append(cords)
     return cord_list
 
-
-# def draw_grid():
-#     block_size = 20
-#     for x in range(0, consts.WINDOW_WIDTH, block_size):
-#         for y in range(0, consts.WINDOW_HEIGHT, block_size):
-#             rect = pygame.Rect(x, y, block_size, block_size)
-#             pygame.draw.rect(screen, consts.WHITE, rect, 1)
 
 def create_mine_screen(mines_list, left_corner_x, left_corner_y):
     pygame.init()
@@ -113,3 +104,6 @@ def draw_message(message, font_size, color, location):
     font = pygame.font.SysFont(consts.FONT_NAME, font_size)
     text_img = font.render(message, True, color)
     screen.blit(text_img, location)
+    pygame.display.update()
+    time.sleep(3)
+    pygame.quit()
