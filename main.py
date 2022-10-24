@@ -21,14 +21,10 @@ state = {
 }
 
 
-# sol_pic = "soldier.png"
-
-
 def main():
     pygame.init()
     Screen.create()
     Screen.draw_game(state)
-    print(state["mine_places"])
     while state["is_window_open"]:
 
         handle_user_events()
@@ -38,14 +34,15 @@ def main():
             state["player_place_x"], state["player_place_y"] = press_check(state["player_place_x"],
                                                                            state["player_place_y"])
 
-            Screen.draw_game(state)
             if MineField.check_touch_mine(
                     Soldier.index_of_soldier_legs(state["player_place_x"], state["player_place_y"]),
                     state["mine_places"]):
                 state["state"] = consts.LOSE_STATE
 
-        if MineField.check_touch_flag(Soldier.index_of_soldier(state["player_place_x"], state["player_place_y"])):
-            state["state"] = consts.WIN_STATE
+            if MineField.check_touch_flag(Soldier.index_of_soldier(state["player_place_x"], state["player_place_y"])):
+                state["state"] = consts.WIN_STATE
+
+            Screen.draw_game(state)
 
 
 def handle_user_events():
@@ -84,9 +81,3 @@ def win_message():
 
 if __name__ == '__main__':
     main()
-# if MineField.check_touch_mine(Soldier.index_of_soldier_legs(state["player_place_x"], state["player_place_y"])):
-#     state["state"] = consts.LOSE_STATE
-#     lose_message()
-# if MineField.check_touch_flag(list_index_sol_body):
-#     state["state"] = consts.WIN_STATE
-#     win_message()
