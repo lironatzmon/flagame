@@ -17,6 +17,7 @@ def create_main_matrix():
 
     put_flag_places()
     put_mine_in_field()
+    print(mine_flag_grid)
 
 
 def put_flag_places():
@@ -46,6 +47,7 @@ def check_touch_mine(list_index_sol_legs):
     for part in list_index_sol_legs:
         if mine_flag_grid[part[0]][part[1]] == "M":
             return True
+    return False
 
 
 def check_touch_flag(list_index_sol_body):
@@ -53,7 +55,9 @@ def check_touch_flag(list_index_sol_body):
             mine_flag_grid[list_index_sol_body[1][0]][list_index_sol_body[1][1]] == "F" or \
             mine_flag_grid[list_index_sol_body[2][0]][list_index_sol_body[2][1]] == "F" or \
             mine_flag_grid[list_index_sol_body[3][0]][list_index_sol_body[3][1]] == "F":
+        print("true")
         return True
+    return False
 
 # def check_touch_flag(list_index_sol_legs):
 #     for row in range(23, 25):
