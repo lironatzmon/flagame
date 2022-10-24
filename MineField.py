@@ -34,7 +34,8 @@ def put_mine_in_field():
     for i in range(20):
         row_random = random.randint(0, consts.SQUARE_GRID_ROWS - 3)
         col_random = random.randint(0, consts.SQUARE_GRID_COLS - 3)
-        mine_flag_grid[row_random][col_random] = "M"
+        for j in range(0, 3):
+            mine_flag_grid[row_random][col_random+j] = "M"
         cord_y = int(row_random * 20)
         cord_x = int(col_random * 20)
         cords = [cord_x, cord_y]
