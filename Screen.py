@@ -25,7 +25,7 @@ def draw_game(state):
     screen.fill(consts.BACKGROUND_COLOR)
     pygame.display.set_caption("The Flag")
     draw_grass(state["grass_places"])
-    Soldier.create_soldier(state["player_place_x"], state["player_place_y"])
+    Soldier.create_soldier(consts.SOLDIER_IMAGE, state["player_place_x"], state["player_place_y"])
     draw_flag(state["flag_place_x"], state["flag_place_y"])
     pygame.display.flip()
 
@@ -74,11 +74,12 @@ def create_mine_screen(mines_list, left_corner_x, left_corner_y):
         cord_x = mine[0]
         cord_y = mine[1]
         draw_mine(cord_x, cord_y)
-    night_soldier = pygame.image.load(consts.MINE_SCREEN_SOLDIER)
-    night_soldier_size = pygame.transform.scale(night_soldier, (
-        consts.SOLDIER_WIDTH, consts.SOLDIER_HEIGHT))
-    screen.blit(night_soldier_size, (left_corner_x, left_corner_y))
-    pygame.display.flip()
+    Soldier.create_soldier(consts.MINE_SCREEN_SOLDIER, left_corner_x, left_corner_y)
+    # night_soldier = pygame.image.load(consts.MINE_SCREEN_SOLDIER)
+    # night_soldier_size = pygame.transform.scale(night_soldier, (
+    #     consts.SOLDIER_WIDTH, consts.SOLDIER_HEIGHT))
+    # screen.blit(night_soldier_size, (left_corner_x, left_corner_y))
+    # pygame.display.flip()
     time.sleep(1)
 
 
