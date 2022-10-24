@@ -52,8 +52,7 @@ def index_of_soldier_legs(left_corner_x, left_corner_y):
     index_col = int(left_corner_y / 20)
     index_list = []
     for row in range(index_row, index_row + 2):
-        for col in range(index_col+3, index_col + 4):
+        for col in range(index_col + 3, index_col + 4):
             index_of_left_corner = [col, row]
             index_list.append(index_of_left_corner)
-    print(index_list)
     return index_list
