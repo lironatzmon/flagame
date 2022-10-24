@@ -28,7 +28,7 @@ def main():
     pygame.init()
     Screen.create()
     Screen.draw_game(state)
-
+    print(MineField.put_mine_in_field())
     while state["is_window_open"]:
 
         handle_user_events()
