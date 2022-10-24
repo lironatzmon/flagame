@@ -20,13 +20,16 @@ state = {
 
 }
 
-sol_pic = "soldier.png"
+# sol_pic = "soldier.png"
 
 
 def main():
     pygame.init()
     Screen.create()
     Screen.draw_game(state)
+    # list_index_sol_body = Soldier.index_of_soldier(state["player_place_x"], state["player_place_y"])
+    # list_index_sol_legs = Soldier.index_of_soldier_legs(state["player_place_x"], state["player_place_y"])
+
     while state["is_window_open"]:
 
         handle_user_events()
@@ -35,16 +38,15 @@ def main():
             state["key_input"] = False
             state["player_place_x"], state["player_place_y"] = press_check(state["player_place_x"], state["player_place_y"])
             Screen.draw_game(state)
+            # list_index_sol_body = Soldier.index_of_soldier(state["player_place_x"], state["player_place_y"])
+            # list_index_sol_legs = Soldier.index_of_soldier_legs(state["player_place_x"], state["player_place_y"])
 
-        list_index_sol_body = Soldier.index_of_soldier(state["player_place_x"], state["player_place_y"]),
-        list_index_sol_legs = Soldier.index_of_soldier_legs(state["player_place_x"], state["player_place_y"])
-
-        if MineField.check_touch_mine(list_index_sol_legs):
-            state["state"] = consts.LOSE_STATE
-            lose_message()
-        if MineField.check_touch_flag(list_index_sol_body):
-            state["state"] = consts.WIN_STATE
-            win_message()
+        # if MineField.check_touch_mine(Soldier.index_of_soldier(state["player_place_x"],state["player_place_y"])):
+        #     state["state"] = consts.LOSE_STATE
+        #     lose_message()
+        # if MineField.check_touch_flag(list_index_sol_body):
+        #     state["state"] = consts.WIN_STATE
+        #     win_message()
 
 
 def handle_user_events():
@@ -69,7 +71,7 @@ def press_check(cord_x, cord_y):
     if key_input[pygame.K_DOWN]:
         cord_y += step
     if key_input[pygame.K_RETURN]:
-        Screen.create_mine_screen()
+        Screen.create_mine_screen(state["mine_places"], state["player_place_x"], state["player_place_y"])
     return cord_x, cord_y
 
 
