@@ -58,11 +58,19 @@ def draw_grid():
             pygame.draw.rect(screen, consts.WHITE, rect, 1)
 
 
-def draw_mine():
+def draw_mine(mine_field_field):
     mine = pygame.image.load(consts.MINE_IMAGE)
     mine_size = pygame.transform.scale(mine, (
         consts.MINE_WIDTH, consts.MINE_HEIGHT))
-    return mine, mine_size
+    for row in range(consts.SQUARE_GRID_ROWS):
+        for col in range(consts.SQUARE_GRID_COLS):
+            if mine_field_field[row][col]["content"] == "F":
+                screen.blit(mine_size, (row, col))
+    pygame.display.update()
+
+                
+
+
 
 
 def draw_flag(left_corner_x, left_corner_y):
