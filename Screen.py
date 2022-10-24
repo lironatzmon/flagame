@@ -71,8 +71,8 @@ def create_mine_screen(mines_list, left_corner_x, left_corner_y):
             rect = pygame.Rect(x, y, consts.LENGTH, consts.LENGTH)
             pygame.draw.rect(scr, consts.GREEN_GRID, rect, 1)
     for mine in mines_list:
-        cord_x = mine[0] * consts.LENGTH
-        cord_y = mine[1] * consts.LENGTH
+        cord_x = mine[0]
+        cord_y = mine[1]
         draw_mine(cord_x, cord_y)
     night_soldier = pygame.image.load(consts.MINE_SCREEN_SOLDIER)
     night_soldier_size = pygame.transform.scale(night_soldier, (
@@ -80,6 +80,7 @@ def create_mine_screen(mines_list, left_corner_x, left_corner_y):
     screen.blit(night_soldier_size, (left_corner_x, left_corner_y))
     pygame.display.flip()
     time.sleep(1)
+
 
 def draw_mine(cord_x, cord_y):
     mine = pygame.image.load(consts.MINE_IMAGE)
