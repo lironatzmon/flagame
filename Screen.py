@@ -50,12 +50,34 @@ def put_grass_in_field():
     return cord_list
 
 
-def draw_grid():
-    block_size = 20
-    for x in range(0, consts.WINDOW_WIDTH, block_size):
-        for y in range(0, consts.WINDOW_HEIGHT, block_size):
-            rect = pygame.Rect(x, y, block_size, block_size)
-            pygame.draw.rect(screen, consts.WHITE, rect, 1)
+# def draw_grid():
+#     block_size = 20
+#     for x in range(0, consts.WINDOW_WIDTH, block_size):
+#         for y in range(0, consts.WINDOW_HEIGHT, block_size):
+#             rect = pygame.Rect(x, y, block_size, block_size)
+#             pygame.draw.rect(screen, consts.WHITE, rect, 1)
+
+def create_mine_screen():
+    grid = []
+    for row in range(consts.SQUARE_GRID_ROWS):
+        grid.append([])
+        for col in range(consts.SQUARE_GRID_COLS):
+            grid[row].append(0)
+    pygame.init()
+    window_size = [consts.WINDOW_WIDTH, consts.WINDOW_HEIGHT]
+    scr = pygame.display.set_mode(window_size)
+    pygame.display.set_caption("Grid")
+    scr.fill(consts.BLACK_SCREEN)
+    for row in range(consts.SQUARE_GRID_ROWS):
+        for col in range(consts.SQUARE_GRID_COLS):
+            color = consts.GREEN_GRID
+            pygame.draw.rect(scr,
+                                 color,
+                                 [(consts.MARGIN + consts.WINDOW_WIDTH) * col + consts.MARGIN,
+                                  (consts.MARGIN + consts.WINDOW_HEIGHT) * row + consts.MARGIN,
+                                  consts.WINDOW_WIDTH,
+                                  consts.WINDOW_HEIGHT])
+    pygame.display.flip()
 
 
 def draw_mine(mine_field_field):
