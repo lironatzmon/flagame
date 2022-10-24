@@ -97,4 +97,4 @@ def draw_flag(left_corner_x, left_corner_y):
         consts.FLAG_WIDTH, consts.FLAG_HEIGHT))
     screen.blit(flag_size, (left_corner_x, left_corner_y))
     pygame.display.update()
-    
+
