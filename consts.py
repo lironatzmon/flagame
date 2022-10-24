@@ -20,6 +20,7 @@ RUNNING_STATE = 1
 LOSE_STATE = 2
 WIN_STATE = 3
 
+MINE_SCREEN_SOLDIER = "soldier_nigth.png"
 SOLDIER_IMAGE = "soldier.png"
 GRASS_IMAGE = "grass.png"
 FLAG_IMAGE = "flag.png"
