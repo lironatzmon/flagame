@@ -68,7 +68,7 @@ def draw_mine(mine_field_field):
                 screen.blit(mine_size, (row, col))
     pygame.display.update()
 
-                
+
 
 
 
